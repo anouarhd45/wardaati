@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Warda's Love Quiz 💖</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ff9fcf;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .quiz-box {
+      background-color: rgba(255, 230, 240, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 500px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .yes { background-color: #ff66b2; color: white; }
+    .no { background-color: #cccccc; }
+    #response {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #cc0077;
+      min-height: 40px;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-box">
+    <h2 id="question">Loading question...</h2>
+    <div id="buttons">
+      <button class="yes" onclick="answer(true)">Yes 😘</button>
+      <button class="no" onclick="answer(false)">No 😢</button>
+    </div>
+    <div id="response"></div>
+  </div>
+
+  <script>
+    const questions = [
+      "Warda, do you know how much I love you? 💘",
+      "Do you think about me like I think about you? 💭",
+      "Would you like to spend forever with me? ⏳💍",
+      "Do you smile when you see my name pop up on your phone? 😊📱",
+      "Can I be the reason you’re always happy? 🥰",
+      "Do you believe we’re meant to be? 💫",
+      "Will you go on a date with me soon? 🍽️💐",
+      "Will you always be my Warda, my flower? 🌸❤️",
+      "Can I get a kiss? 😚",
+      "Will you say ‘I love you’ back to me right now? 😍"
+    ];
+
+    const yesResponses = [
+      "I love you more than words can say! 💖",
+      "I hope I never leave your thoughts! 🫶",
+      "Forever sounds perfect with you. 💍",
+      "I smile too when I see yours! 😍",
+      "That’s all I want — to make you happy! 💞",
+      "Then I believe in fate too 💫",
+      "Get ready for the best date ever 😘",
+      "You’ll always be my flower, Warda 🌹",
+      "*muah* 😘",
+      "I love you too 💕"
+    ];
+
+    const noResponses = [
+      "I’ll remind you every day then! 💌",
+      "I’ll keep thinking of you till you do! 💘",
+      "One day, I hope we will. 💍",
+      "That’s okay, I’ll keep trying! ☺️",
+      "I’ll do my best to be that reason! 🫶",
+      "Then I’ll do my best to convince you! 💫",
+      "No pressure, but I’d love that ❤️",
+      "You’ll always be special to me anyway 💗",
+      "Guess I’ll wait patiently... 😚",
+      "It’s okay... I still love you 🥺"
+    ];
+
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+      if (currentQuestion < questions.length) {
+        document.getElementById("question").innerText = questions[currentQuestion];
+        document.getElementById("response").innerText = "";
+      } else {
+        document.getElementById("question").innerText = "Thank you for playing, Warda ❤️";
+        document.getElementById("buttons").style.display = "none";
+        document.getElementById("response").innerHTML = "<strong>You’re the most special person in my world 💖<br>Love you always 💕</strong>";
+      }
+    }
+
+    function answer(isYes) {
+      const message = isYes ? yesResponses[currentQuestion] : noResponses[currentQuestion];
+      document.getElementById("response").innerText = message;
+      currentQuestion++;
+      setTimeout(loadQuestion, 2000);
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
